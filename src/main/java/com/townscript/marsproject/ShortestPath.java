@@ -27,4 +27,10 @@ public class ShortestPath {
   public void setRoute(List<Point> route) {
     this.route = route;
   }
+
+  @Override
+  public String toString() {
+    return "ShortestPath [distance=" + distance + ", route=" + route + "]";
+  }
+
 }

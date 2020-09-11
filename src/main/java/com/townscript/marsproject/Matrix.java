@@ -87,4 +87,13 @@ public class Matrix {
     }
     return null;
   }
+
+  public static void main(String[] args) {
+    Matrix m = new Matrix(1, 10);
+    m.dead(0, 5);
+    m.dead(0, 6);
+    ShortestPath sp = m.shortestPath(Point.P(0, 8), Point.P(0, 4));
+    System.out.println(sp);
+  }
+
 }
