@@ -53,22 +53,18 @@ public class App {
 
   private void printWinner(ShortestPath usShortestPath, ShortestPath ruShortestPath) {
 
-    try {
-      if (usShortestPath.distance == ruShortestPath.distance) {
-        System.out.println("TIE");
-      } else if (usShortestPath.distance > ruShortestPath.distance) {
-        System.out.println("RUSSIA");
-      } else {
-        System.out.println("US");
-      }
-    } catch (NullPointerException e) {
-      if (usShortestPath == null && ruShortestPath != null) {
-        System.out.println("RUSSIA");
-      } else if (usShortestPath != null && ruShortestPath == null) {
-        System.out.println("US");
-      } else {
-        System.out.println("TIE");
-      }
+    if (usShortestPath == null && ruShortestPath == null) {
+      System.out.println("TIE");
+    } else if (usShortestPath == null || ruShortestPath != null) {
+      System.out.println("RUSSIA");
+    } else if (usShortestPath != null && ruShortestPath == null) {
+      System.out.println("US");
+    } else if (usShortestPath.distance == ruShortestPath.distance) {
+      System.out.println("TIE");
+    } else if (usShortestPath.distance > ruShortestPath.distance) {
+      System.out.println("RUSSIA");
+    } else {
+      System.out.println("US");
     }
   }
 
