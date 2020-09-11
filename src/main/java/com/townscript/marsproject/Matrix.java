@@ -88,6 +88,15 @@ public class Matrix {
     return null;
   }
 
+  public static void convertToCoordinateSystem(List<Point> points) {
+    for (int i = 0; i < points.size(); i++) {
+      Point t = points.get(i);
+      int temp = t.x;
+      t.x = t.y;
+      t.y = temp;
+    }
+  }
+
   public static void main(String[] args) {
     Matrix m = new Matrix(3, 3);
     m.dead(0, 1);
@@ -95,5 +104,4 @@ public class Matrix {
     ShortestPath sp = m.shortestPath(Point.P(0, 0), Point.P(1, 1));
     System.out.println(sp);
   }
-
 }
