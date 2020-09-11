@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Point {
-  final int x;
-  final int y;
+  int x;
+  int y;
 
   public static final Point[] NEIGHBORS = new Point[4];
 

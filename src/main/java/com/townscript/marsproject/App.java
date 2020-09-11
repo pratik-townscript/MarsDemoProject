@@ -22,14 +22,13 @@ public class App {
 
   private void provideResult() {
     ShortestPath usShortestPath = matrix.shortestPath(usStart, destination);
+    ShortestPath ruShortestPath = matrix.shortestPath(ruStart, destination);
 
     if (usShortestPath == null) {
       printUnreachableDesOutput();
     } else {
       printOutput(usShortestPath, usInitialDirection);
     }
-
-    ShortestPath ruShortestPath = matrix.shortestPath(ruStart, destination);
 
     if (ruShortestPath == null) {
       printUnreachableDesOutput();
@@ -77,38 +76,40 @@ public class App {
     int m = in.nextInt();
     int n = in.nextInt();
     int p = in.nextInt();
-    System.out.println("m " + m + " n " + n + " p " + p);
     if (m <= 0 || n <= 0 || p < 0) {
       in.close();
       throw new IllegalArgumentException("Invalid Input values provided");
     }
     this.matrix = new Matrix(m, n);
     for (int i = 0; i < p; i++) {
-      int x = in.nextInt();
       int y = in.nextInt();
+      int x = in.nextInt();
       this.matrix.dead(x, y);
     }
-    int destX = in.nextInt();
     int destY = in.nextInt();
+    int destX = in.nextInt();
     destination = P(destX, destY);
-    System.out.println("destination " + destination);
 
-    int usStartX = in.nextInt();
     int usStartY = in.nextInt();
+    int usStartX = in.nextInt();
     usStart = P(usStartX, usStartY);
     usInitialDirection = in.next();
-    System.out.println("Us position is " + usStart + " intial direction is " + usInitialDirection);
 
-    int ruStartX = in.nextInt();
     int ruStartY = in.nextInt();
+    int ruStartX = in.nextInt();
     ruStart = P(ruStartX, ruStartY);
     ruInitialDirection = in.next();
-    System.out.println("Russio position is " + ruStart + " intial dir is " + ruInitialDirection);
     in.close();
   }
 
 
   public String getPath(List<Point> points, String startDirection) {
+    for (int i = 0; i < points.size(); i++) {
+      Point t = points.get(i);
+      int temp = t.x;
+      t.x = t.y;
+      t.y = temp;
+    }
     String path = "";
     String strtDir = startDirection;
     for (int i = 0; i < points.size() - 1; i++) {
