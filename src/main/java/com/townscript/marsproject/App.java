@@ -55,7 +55,7 @@ public class App {
 
     if (usShortestPath == null && ruShortestPath == null) {
       System.out.println("TIE");
-    } else if (usShortestPath == null || ruShortestPath != null) {
+    } else if (usShortestPath == null && ruShortestPath != null) {
       System.out.println("RUSSIA");
     } else if (usShortestPath != null && ruShortestPath == null) {
       System.out.println("US");
